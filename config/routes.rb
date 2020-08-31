@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'session/home'
-  get 'session/new'
+
+  get '/login' => 'session#new'
+  post '/login' => 'session#create'
+  delete '/login' => 'session#destroy'
+
   # Users CRUD
   resources :users
 
@@ -11,5 +14,6 @@ Rails.application.routes.draw do
   resources :posts
 
   post '/posts/:id' => 'posts#add_comment_to_post'
+
 
 end
