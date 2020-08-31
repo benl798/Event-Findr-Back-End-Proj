@@ -86,6 +86,15 @@ p2 = Post.create!(
   post_visibility: true
 )
 
+p3 = Post.create!(
+  title:'Third event just as cool',
+  description: 'Third even description',
+  image: 'https://www.fillmurray.com/g/300/200',
+  latitude: -31.938506,
+  longitude: 115.856777,
+  post_visibility: true
+)
+
 puts "Created #{ Post.count } posts:"
 
 p1.comments << c1
@@ -95,5 +104,10 @@ u1.comments << c1
 u2.comments << c2
 u3.comments << c3
 
+<<<<<<< HEAD
 u1.posts << p1
 u2.posts << p2
+=======
+u1.posts << p1 << p2
+u2.posts << p3
+>>>>>>> a97e3a62916a85ee0779247ba67d9c3c6b1b36f7
