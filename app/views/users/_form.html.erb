@@ -1,0 +1,33 @@
+<%= form_for @user, html: {multipart: true} do |f| %>
+
+<%= f.label :name, 'Name:' %>
+<%= f.text_field :name, required: true %>
+<br>
+
+<%= f.label :email, 'Email:' %>
+<%= f.text_field :email, required: true %>
+<br>
+
+<%= f.label :password, 'Password:' %>
+<%= f.text_field :password, required: true %>
+<br>
+
+<%= f.label :image, 'Image:' %>
+<%= f.text_field :image, required: true %>
+<br>
+
+<%= f.label :latitude, 'Latitude:' %>
+<%= f.text_field :latitude, required: true %>
+<br>
+
+<%= f.label :longitude, 'Longitude:' %>
+<%= f.number_field :longitude, required: true %>
+<br>
+
+<%= f.label :account_type, 'Account Type:' %>
+<%= f.text_field :account_type, required: true %>
+<br>
+
+<%= f.submit 'Submit' %>
+
+<% end %>

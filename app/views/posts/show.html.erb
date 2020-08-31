@@ -1,0 +1,43 @@
+<h2> <%= @post.title %> </h2>
+
+<p>
+  <strong>Title:</strong> <%= @post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong> <%= @post.description %>
+</p>
+
+<p>
+  <strong>Image:</strong> <%= image_tag @post.image %>
+</p>
+
+<p>
+  <strong>Longitude:</strong> <%= @post.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong> <%= @post.latitude %>
+</p>
+
+<p>
+  <strong>Post Visibility:</strong> <%= @post.post_visibility %>
+</p>
+
+
+<p><%= link_to 'Edit', edit_post_path(@post) %></p>
+<p><%= link_to 'Delete', post_path(@post.id), method: 'delete' %></p>
+<p><%= link_to 'Back', posts_path %></p>
+
+<div>
+  <h3>Want to leave a comment?</h3>
+    <%= form_tag url_for(action: 'add_comment_to_post', method: 'post') do %>
+    <%= text_field_tag :comment, nil, placeholder: 'Flop' %>
+    <%= submit_tag 'Post Comment' %>
+  <% end %>
+</div>
+
+<% @comments.each do |c| %>
+  <h4><%= c.user.name %>:</h4>
+  <p><%= c.comment %></p>
+<% end %>

@@ -1,0 +1,36 @@
+<h2> <%= @user.name %> </h2>
+
+<p>
+  <strong>Name:</strong> <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong> <%= @user.email %>
+</p>
+
+<p>
+  <strong>Image:</strong> <%= image_tag @user.image %>
+</p>
+
+<p>
+  <strong>Longitude:</strong> <%= @user.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong> <%= @user.latitude %>
+</p>
+
+<p>
+  <strong>Account Type:</strong> <%= @user.account_type %>
+</p>
+
+<p>
+  <strong>Password:</strong> <%= @user.password_digest %>
+</p>
+
+
+
+
+<p><%= link_to 'Edit', edit_user_path(@user) %></p>
+<p><%= link_to 'Delete', user_path(@user.id), method: 'delete' %></p>
+<p><%= link_to 'Back', users_path %></p>

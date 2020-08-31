@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  email: MyText
+  password: MyText
+  image: MyText
+  latitutde: 1.5
+  longitude: 1.5
+  account_type: MyText
+
+two:
+  name: MyText
+  email: MyText
+  password: MyText
+  image: MyText
+  latitutde: 1.5
+  longitude: 1.5
+  account_type: MyText

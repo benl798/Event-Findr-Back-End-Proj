@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'session/home'
+  get 'session/new'
+  # Users CRUD
+  resources :users
+
+  # Comments CRUD
+  resources :comments
+
+  # Posts CRUD
+  resources :posts
+
+  post '/posts/:id' => 'posts#add_comment_to_post'
+
 end
