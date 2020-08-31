@@ -50,6 +50,14 @@ class PostsController < ApplicationController
     redirect_to post_path(post)
   end
 
+  def show_my_posts
+    posts = User.find_by(id: params[:id]).posts
+    respond_to do |format|
+      format.html
+      format.json {render json: posts, include: ['comments']}
+    end
+  end
+
   private
 
   def post_params

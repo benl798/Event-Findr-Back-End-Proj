@@ -15,5 +15,9 @@ Rails.application.routes.draw do
 
   post '/posts/:id' => 'posts#add_comment_to_post'
 
+  #JSON Routes
+  #Route to provide ONLY the posts that belong to the current user
+  get '/posts/:id/show_my_posts' => 'posts#show_my_posts'
+
 
 end
