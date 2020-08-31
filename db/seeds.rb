@@ -94,3 +94,6 @@ p2.comments << c2 << c3
 u1.comments << c1
 u2.comments << c2
 u3.comments << c3
+
+u1.posts << p1
+u2.posts << p2
