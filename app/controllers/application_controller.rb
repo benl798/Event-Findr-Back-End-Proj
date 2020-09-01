@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :fetch_user
 
+  include Knock::Authenticable 
+
   def fetch_user
     if session[:user_id].present?
       @current_user = User.find_by id: session[:user_id]

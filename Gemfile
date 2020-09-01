@@ -54,3 +54,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry-rails'
 
 gem "rack-cors", "~> 1.1"
+
+gem 'knock'

@@ -104,10 +104,6 @@ u1.comments << c1
 u2.comments << c2
 u3.comments << c3
 
-<<<<<<< HEAD
+
 u1.posts << p1
 u2.posts << p2
-=======
-u1.posts << p1 << p2
-u2.posts << p3
->>>>>>> a97e3a62916a85ee0779247ba67d9c3c6b1b36f7

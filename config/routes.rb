@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
+  post 'user_token' => 'user_token#create'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 
   # Users CRUD
-  resources :users
+  # resources :users
+  scope '/api' do
+    resources :users
+    post 'user_token' => 'user_token#create'
+  end
 
   # Comments CRUD
   resources :comments
@@ -19,5 +24,6 @@ Rails.application.routes.draw do
   #Route to provide ONLY the posts that belong to the current user
   get '/posts/:id/show_my_posts' => 'posts#show_my_posts'
 
+  # Knock user tokens
 
 end
