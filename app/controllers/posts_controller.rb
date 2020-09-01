@@ -4,8 +4,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create post_params
-    redirect_to posts_path
+    Post.create!(
+      title: params[:title],
+      description: params[:description],
+      image: params[:image],
+      latitude: current_user.latitude,
+      longitude: current_user.longitude,
+      user_id: current_user.id
+    )
   end
 
   def index

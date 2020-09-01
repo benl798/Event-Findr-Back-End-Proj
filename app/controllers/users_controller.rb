@@ -62,6 +62,11 @@ class UsersController < ApplicationController
 
   end
 
+  # Function to update the location of the current user to match what is happening in the browser
+  def update_my_location
+    current_user.update(latitude: params[:latitude], longitude: params[:longitude])
+  end
+
   private
 
   def user_params

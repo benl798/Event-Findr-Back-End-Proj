@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # Posts CRUD
   resources :posts
 
-  post '/posts/:id' => 'posts#add_comment_to_post'
+  post '/posts/:id/add_comment_to_post' => 'posts#add_comment_to_post'
 
   # Like Posts
   post '/posts/:id/like_this_post' => 'posts#like_this_post'
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   #Route to provide ONLY the posts that belong to the current user
   get '/my_posts' => 'posts#show_my_posts'
   get '/setUserName' => 'users#setUserName'
+  post '/update_my_location' => 'users#update_my_location'
 
   # Knock user tokens
 
