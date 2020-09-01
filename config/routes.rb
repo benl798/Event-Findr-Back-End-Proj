@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   resources :posts
 
   post '/posts/:id/add_comment_to_post' => 'posts#add_comment_to_post'
+  
+  resources :likes
 
   # Like Posts
   post '/posts/:id/like_this_post' => 'posts#like_this_post'

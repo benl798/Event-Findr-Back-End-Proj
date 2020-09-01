@@ -1,9 +1,8 @@
 class User < ApplicationRecord
     has_many :posts # one-to-many
 
-    has_and_belongs_to_many :liked_posts, class_name: 'Post' # many-to-many for 'like/fave'
 
-    # has_and_belongs_to_many :disliked_posts, class_name: 'Post'
+
 
     has_many :comments # one-to-many
 
@@ -16,4 +15,14 @@ class User < ApplicationRecord
 
     has_many :following, through: 'following_relationships', source: 'followed'
     has_many :followers, through: 'followed_relationships', source: 'follower'
+
+    has_many :votes, class_name: 'Like'
+
+    def liked_posts
+      votes.where(status: 'like').includes(:post).map(&:post)
+    end
+
+    def disliked_posts
+      votes.where(status: 'dislike').includes(:post).map(&:post)
+    end
 end
