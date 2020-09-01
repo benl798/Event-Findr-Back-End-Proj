@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user
-  before_action :set_user, only: [:show, :update, :destroy]
+  # before_action :authenticate_user
+  # before_action :set_user, only: [:show, :update, :destroy]
 
   def new
     @user = User.new
@@ -44,6 +44,16 @@ class UsersController < ApplicationController
     user = User.find params[:id]
     user.destroy
     redirect_to users_path
+  end
+
+  def follow_this_user
+    user = User.find_by(id: params[:id])
+    if user.following.include?(@current_user)
+      user.following.delete(@current_user)
+    else
+      user.following << @current_user
+    end
+    redirect_to user_path(params[:id])
   end
 
   private

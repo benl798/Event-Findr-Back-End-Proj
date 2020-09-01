@@ -58,6 +58,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def like_this_post
+    post = Post.find_by(id: params[:id])
+    if post.liked_by_users.include?(@current_user)
+      post.liked_by_users.delete(@current_user)
+    else
+      post.liked_by_users << @current_user
+    end
+    redirect_to post_path(params[:id])
+  end
+
+
+
+  # def dislike_this_post
+  #   post = Post.find_by(id: params[:id])
+  #   if post.disliked_by_users.include?(@current_user)
+  #     post.disliked_by_users.delete(@current_user)
+  #   else
+  #     post.disliked_by_users << @current_user
+  #   end
+  #   redirect_to post_path(params[:id])
+  # end
+
   private
 
   def post_params

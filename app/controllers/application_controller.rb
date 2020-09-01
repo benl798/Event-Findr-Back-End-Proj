@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :fetch_user
 
-  include Knock::Authenticable 
+  # include Knock::Authenticable
 
   def fetch_user
     if session[:user_id].present?
