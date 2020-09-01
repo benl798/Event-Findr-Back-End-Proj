@@ -22,7 +22,8 @@ Rails.application.routes.draw do
 
   #JSON Routes
   #Route to provide ONLY the posts that belong to the current user
-  get '/posts/:id/show_my_posts' => 'posts#show_my_posts'
+  get '/my_posts' => 'posts#show_my_posts'
+  get '/setUserName' => 'users#setUserName'
 
   # Knock user tokens
 

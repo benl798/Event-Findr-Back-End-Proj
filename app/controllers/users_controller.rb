@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user
-  before_action :set_user, only: [:show, :update, :destroy]
+
 
   def new
     @user = User.new
@@ -44,6 +43,13 @@ class UsersController < ApplicationController
     user = User.find params[:id]
     user.destroy
     redirect_to users_path
+  end
+
+  def setUserName
+    respond_to do |format|
+      format.html
+      format.json {render json: current_user.name}
+    end
   end
 
   private
