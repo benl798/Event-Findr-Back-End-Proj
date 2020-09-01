@@ -3,11 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user
   # before_action :set_user, only: [:show, :update, :destroy]
 
-<<<<<<< HEAD
   include Knock::Authenticable
-=======
-  # include Knock::Authenticable
->>>>>>> aa15c3e16face8cbfbf2d23f816ea4faa285ae92
 
   def fetch_user
     if session[:user_id].present?
