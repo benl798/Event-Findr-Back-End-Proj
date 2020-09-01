@@ -28,7 +28,17 @@
   <strong>Password:</strong> <%= @user.password_digest %>
 </p>
 
+<h4>Followers: </h4>
+<%= @user.following.count %>
 
+<h4>Followed by: </h4>
+<% @user.following.each do |user| %>
+  <span><%= user.name %>, </span>
+<% end %>
+
+<%= form_tag url_for(action: 'follow_this_user', method: 'post') do %>
+<%= submit_tag 'Follow' %>
+<% end %>
 
 
 <p><%= link_to 'Edit', edit_user_path(@user) %></p>

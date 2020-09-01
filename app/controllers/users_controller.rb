@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 
+<<<<<<< HEAD
 
+=======
+  # before_action :authenticate_user
+  # before_action :set_user, only: [:show, :update, :destroy]
+>>>>>>> aa15c3e16face8cbfbf2d23f816ea4faa285ae92
 
   def new
     @user = User.new
@@ -45,11 +50,22 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+<<<<<<< HEAD
   def setUserName
     respond_to do |format|
       format.html
       format.json {render json: current_user.name}
     end
+=======
+  def follow_this_user
+    user = User.find_by(id: params[:id])
+    if user.following.include?(@current_user)
+      user.following.delete(@current_user)
+    else
+      user.following << @current_user
+    end
+    redirect_to user_path(params[:id])
+>>>>>>> aa15c3e16face8cbfbf2d23f816ea4faa285ae92
   end
 
   private
