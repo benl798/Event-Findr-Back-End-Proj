@@ -107,3 +107,39 @@ u3.comments << c3
 
 u1.posts << p1
 u2.posts << p2
+
+l1 = Like.create!(
+  user: u1,
+  post: p1,
+  status: 'like'
+)
+
+l2 = Like.create!(
+  user: u1,
+  post: p2,
+  status: 'dislike'
+)
+
+l3 = Like.create!(
+  user: u2,
+  post: p2,
+  status: 'like'
+)
+
+l4 = Like.create!(
+  user: u2,
+  post: p1,
+  status: 'dislike'
+)
+
+l5 = Like.create!(
+  user: u3,
+  post: p1,
+  status: 'like'
+)
+
+l6 = Like.create!(
+  user: u3,
+  post: p2,
+  status: 'dislike'
+)

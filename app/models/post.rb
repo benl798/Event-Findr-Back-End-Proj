@@ -6,4 +6,13 @@ class Post < ApplicationRecord
   belongs_to :user, optional: true # many-to-many for 'like/fave'
 
   has_many :comments
+  has_many :votes, class_name: 'Like'
+
+  def liked_by
+    votes.where(status: 'like').includes(:user).map(&:user)
+  end
+
+  def disliked_by
+    votes.where(status: 'dislike').includes(:user).map(&:user)
+  end
 end

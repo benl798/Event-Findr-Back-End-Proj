@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   # Posts CRUD
   resources :posts
 
+  # Likes CRUD
+  resources :likes
+
   post '/posts/:id' => 'posts#add_comment_to_post'
 
   # Like Posts
