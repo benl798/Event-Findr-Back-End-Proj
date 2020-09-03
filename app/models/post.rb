@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+
+
+
   has_and_belongs_to_many :liked_by_users, class_name: 'User'
 
   # has_and_belongs_to_many :disliked_by_users, class_name: 'User'
@@ -7,6 +10,10 @@ class Post < ApplicationRecord
 
   has_many :comments
   has_many :votes, class_name: 'Like'
+
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
+
 
   def liked_by
     votes.where(status: 'like').includes(:user).map(&:user)

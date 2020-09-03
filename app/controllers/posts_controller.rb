@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+
+  before_action :authenticate_user
+
+
   def new
     @post = Post.new
   end
@@ -20,8 +24,25 @@ class PostsController < ApplicationController
       format.html
       format.json {render json: @posts}
     end
-
   end
+
+  #Index methods
+  def index_all
+    posts = Post.all
+    render json: posts, include: ['liked_by']
+  end
+
+  def index_near_me
+    posts = Post.near([current_user.latitude, current_user.longitude], 50)
+    render json: posts, include: ['liked_by']
+  end
+
+  def index_follows
+    following_ids = current_user.following_ids
+    posts = Post.where(user_id: following_ids)
+    render json: posts, include: ['liked_by']
+  end
+
 
   def show
     @users = User.all
@@ -29,7 +50,7 @@ class PostsController < ApplicationController
     @comments = Comment.where(post_id: @post.id) # array of objects associated with that post ID
     respond_to do |format| #method
       format.html
-      format.json {render json: @post, include: ['comments']}
+      format.json {render json: @post, include: ['comments', 'liked_by', 'disliked_by']}
     end
   end
 
@@ -46,14 +67,12 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find params[:id]
     post.destroy
-    redirect_to posts_path
   end
 
   def add_comment_to_post
     post = Post.find params[:id]
-    comment = Comment.create!(comment: params[:comment], user_id: User.first.id)
-    post.comments << comment
-    redirect_to post_path(post)
+    comment = Comment.create!(comment: params[:comment], user_id: current_user.id, post_id: post.id)
+    render json: post, include: ['comments', 'liked_by', 'disliked_by']
   end
 
   def show_my_posts
@@ -74,17 +93,29 @@ class PostsController < ApplicationController
     redirect_to post_path(params[:id])
   end
 
+  def create_like_for_this_post
+    Like.create(
+      post_id: params[:post_id],
+      user_id: current_user.id,
+      status: params[:status]
+    )
+  end
 
+  def remove_like_from_post
+    Like.find_by(user_id: current_user.id, post_id: params[:post_id]).destroy
+  end
 
-  # def dislike_this_post
-  #   post = Post.find_by(id: params[:id])
-  #   if post.disliked_by_users.include?(@current_user)
-  #     post.disliked_by_users.delete(@current_user)
-  #   else
-  #     post.disliked_by_users << @current_user
-  #   end
-  #   redirect_to post_path(params[:id])
-  # end
+  def get_owner_of_post
+    user = User.find_by(id: Post.find_by(id: params[:id]).user_id)
+    render json: {id: user.id, name: user.name}
+  end
+
+  def distance_from_me
+    post = Post.find_by(id: params[:id])
+    distance = post.distance_to([current_user.latitude, current_user.longitude])
+    render json: distance
+  end
+
 
   private
 

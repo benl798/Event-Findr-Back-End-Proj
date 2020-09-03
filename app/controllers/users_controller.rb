@@ -1,19 +1,18 @@
 class UsersController < ApplicationController
 
+  include ActiveModel::Serialization
 
   def new
     @user = User.new
   end
 
   def create
-    @user = User.create user_params
-
-    if @user.persisted?
-        session[:user_id] = @user.id
-        redirect_to workouts_path
-      else
-        render :new
-      end
+    user = User.create(
+      name: params[:name],
+      email: params[:email],
+      password: params[:password],
+    )
+    render json: user
   end
 
   def index
@@ -51,21 +50,31 @@ class UsersController < ApplicationController
     end
   end
 
-  def follow_this_user
-    user = User.find_by(id: params[:id])
-    if user.following.include?(@current_user)
-      user.following.delete(@current_user)
-    else
-      user.following << @current_user
-    end
-    redirect_to user_path(params[:id])
-
-  end
 
   # Function to update the location of the current user to match what is happening in the browser
   def update_my_location
     current_user.update(latitude: params[:latitude], longitude: params[:longitude])
   end
+
+  #Function to get the current_user's info in the front end
+  def get_current_user
+    render json: current_user, methods: :following_ids
+  end
+
+  def handle_follow
+    if params[:method] == 'Unfollow'
+      Follow.find_by(
+        follower_id: current_user.id,
+        followed_id: params[:followed_id]
+      ).destroy
+    else
+      Follow.create(
+        follower_id: current_user.id,
+        followed_id: params[:followed_id]
+      )
+    end
+  end
+
 
   private
 
