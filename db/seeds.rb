@@ -40,16 +40,6 @@ u3 = User.create!(
   account_type: 'Business'
 )
 
-u2 = User.create!(
-  name:'Chris',
-  email: 'chris@ga.com',
-  password: 'chicken',
-  image: 'https://www.fillmurray.com/g/400/200',
-  longitude:151.206433,
-  latitude: -33.864006,
-  account_type: 'Personal'
-)
-
 u4 = User.create!(
   name:'Danny',
   email: 'danny@ga.com',
@@ -293,8 +283,8 @@ p8 = Post.create!(
 puts "Created #{ Post.count } posts:"
 
 p1.comments << c1 << c4 << c12 << c15
-p2.comments << c2 << c3 << c16
-p3.comments << c5 << c11 << c17
+p2.comments << c2 << c3
+p3.comments << c5 << c11
 p4.comments << c6 << c13 << c14
 p5.comments << c7 << c8 << c9
 
@@ -309,8 +299,7 @@ u8.comments << c8 << c15
 u9.comments << c9 << c14
 u10.comments << c10 << c13
 u11.comments << c11 << c12
-u12.comments << c16
-u13.comments << c17
+
 
 
 u1.posts << p1
