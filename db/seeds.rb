@@ -218,7 +218,7 @@ p1 = Post.create!(
 
 
 p2 = Post.create!(
-  title:'Dan Murphys free wine tasting!',
+  title:'Free wine tasting!',
   description: 'Cheese too!',
   image: 'https://i.dailymail.co.uk/i/pix/2014/10/14/1413326827214_wps_13_BXDEHC_Young_people_raisi.jpg',
   latitude: -33.801028,
@@ -227,7 +227,7 @@ p2 = Post.create!(
 )
 
 p3 = Post.create!(
-  title:'Parkour - If youre brave enough?',
+  title:'Parkour',
   description: 'Come down and have a run around with us.',
   image: 'https://i.ytimg.com/vi/5XcwWJhNTPE/maxresdefault.jpg',
   latitude: -33.808859,
@@ -245,7 +245,7 @@ p4 = Post.create!(
 )
 
 p5 = Post.create!(
-  title:'Free axe throwing competition!',
+  title:'Axe throwing competition!',
   description: 'Fair warning to all, my aim is slightly off after 10 beers...',
   image: 'https://www.gannett-cdn.com/-mm-/1fecae5856e58374cc9e1c0fd6dcc3c6aae79d4e/c=0-293-5760-3547/local/-/media/2017/05/23/INGroup/Indianapolis/636311496324307184-Axe-Throwing-in-Style.jpg?width=3200&height=1680&fit=crop',
   latitude: -33.813943,
@@ -272,7 +272,7 @@ p7 = Post.create!(
 )
 
 p8 = Post.create!(
-  title:'Red Hot Chilli Peppers Concert!',
+  title:'RHCP Concert!',
   description: 'One of the best bands ever, do I need to say anymore? Get over here!',
   image: 'https://api.time.com/wp-content/uploads/2016/09/red-hot-chili-peppers-tour-2017.jpg',
   latitude: -33.795558,
