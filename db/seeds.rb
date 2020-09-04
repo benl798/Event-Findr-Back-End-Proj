@@ -15,8 +15,8 @@ u1 = User.create!(
   email: 'ben@ga.com',
   password: 'chicken',
   image: 'https://www.fillmurray.com/g/200/300',
-  longitude: -33.814871,
-  latitude: 151.166435,
+  longitude: 151.166435,
+  latitude: -33.814871,
   account_type: 'Personal'
 )
 
